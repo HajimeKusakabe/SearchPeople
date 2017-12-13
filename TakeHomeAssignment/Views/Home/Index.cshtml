@@ -1,0 +1,47 @@
+﻿<div ng-app="ngmodule">
+    <div ng-controller="ngcontroller">
+        <br />
+        <label class="control-label">Enter the person's partial/complete first or last name</label>
+        &nbsp;
+        <span class="glyphicon glyphicon-info-sign info" title="Empty entry search will return all"></span>
+        <br />
+        <input type="text" ng-model="searchInput" class="form-control" id="txtSearchInput" />
+        <button type="button" class="btn btn-primary" ng-click="searchPersons()" id="submitSearch">Search</button>
+
+        <br /><br />
+        <div id="progress" style="display:none">
+            <div class="progress-bar progress-bar-striped progress-bar-success active" style="width:100%">
+                Searching ...
+            </div>
+        </div>
+        <br />
+
+        <span>{{searchMessage}}</span>
+        <br />
+        <div>
+            <table class="table table-bordered table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Age</th>
+                        <th>Interest</th>
+                        <th>Picture</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="person in Persons" id="Persons">
+                        <td>{{person.FirstName + ' ' + person.LastName}}</td>
+                        <td>{{person.Address + ', '+ person.City + ',' + person.State + ' ' + person.Zip}}</td>
+                        <td>{{person.Age}}</td>
+                        <td>{{person.Interest}}</td>
+                        <td>
+                            <img data-ng-src="data:image/png;base64,{{person.Picture}}" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
